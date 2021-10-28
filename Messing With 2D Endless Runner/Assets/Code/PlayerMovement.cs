@@ -168,8 +168,10 @@ public class PlayerMovement : MonoBehaviour
         score = 0;
 
         rb.gravityScale = 1;
-        rb.velocity = new Vector2(0, -jumpHeight * 2);
+        rb.velocity = new Vector2(0, -jumpHeight);
         upsideDown = false;
+        transitioning = false;
+        inAir = true;
     }
 
     public void Disable()
