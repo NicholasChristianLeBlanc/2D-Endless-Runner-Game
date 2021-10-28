@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpawnObstacles : MonoBehaviour
 {
     [SerializeField] private GameObject[] boundaries;
+    [SerializeField] private GameObject playerCharacter;
     [SerializeField] private GameObject killBlock;
     [SerializeField] private GameObject[] spawnpoints;
     
@@ -11,8 +12,6 @@ public class SpawnObstacles : MonoBehaviour
     private List<int> spawnCooldowns = new List<int>();
     private GameObject selectedSpawnpoint, secondarySpawnpoint, spawnedKillBlock, secondarySpawnedKillBlock;
     private int selectedValue;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +79,7 @@ public class SpawnObstacles : MonoBehaviour
                     {
                         secondarySpawnedKillBlock = Instantiate(killBlock, secondarySpawnpoint.transform.position, secondarySpawnpoint.transform.rotation);
                         secondarySpawnedKillBlock.GetComponent<KillBlocks>().SetStatic(false);
+                        secondarySpawnedKillBlock.GetComponent<KillBlocks>().SetPlayer(playerCharacter);
                         secondarySpawnedKillBlock.GetComponent<KillBlocks>().CompareBoundaries(boundaries);
                         secondarySpawnedKillBlock.SetActive(true);
                     }
@@ -89,6 +89,7 @@ public class SpawnObstacles : MonoBehaviour
 
                 spawnedKillBlock = Instantiate(killBlock, selectedSpawnpoint.transform.position, selectedSpawnpoint.transform.rotation);
                 spawnedKillBlock.GetComponent<KillBlocks>().SetStatic(false);
+                spawnedKillBlock.GetComponent<KillBlocks>().SetPlayer(playerCharacter);
                 spawnedKillBlock.GetComponent<KillBlocks>().CompareBoundaries(boundaries);
                 spawnedKillBlock.SetActive(true);
 

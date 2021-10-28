@@ -55,4 +55,9 @@ public class KillBlocks : MonoBehaviour
     {
         isStatic = newStatic;
     }
+
+    public void SetPlayer(GameObject player)
+    {
+        playerCharacter = player;
+    }
 }

@@ -5,9 +5,12 @@ using UnityEngine;
 public class DestroyWhenEnd : StateMachineBehaviour
 {
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Destroy(animator.gameObject, stateInfo.length);
+        if (stateInfo.normalizedTime >= 1)
+        {
+            animator.gameObject.SetActive(false);
+        }
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
